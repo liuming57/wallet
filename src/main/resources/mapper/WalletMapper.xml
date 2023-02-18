@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.infra.mapper.WalletMapper">
+
+
+    <sql id = "BaseSql">
+        ov.id,
+        ov.user_id,
+        ov.money,
+        ov.creation_time,
+        ov.created_by,
+        ov.last_update_by,
+        ov.last_update_time,
+        ov.object_version
+    </sql>
+
+    <select id = "selectList" resultType = "com.example.domain.entity.Wallet">
+        select
+        <include refid = "BaseSql"/>
+        from wallet ov
+        <where>
+            <if test="id !=null">
+                and ov.id = #{id,jdbcType = INTEGER}
+            </if>
+            <if test="userId !=null">
+                and ov.user_id = #{userId,jdbcType = INTEGER}
+            </if>
+            <if test="money !=null">
+                and ov.money = #{optionMoney,jdbcType = OTHER}
+            </if>
+            <if test="creationTime !=null">
+                and ov.creation_time = #{creationTime,jdbcType = TIMESTAMP}
+            </if>
+            <if test="lastUpdateTime !=null">
+                and ov.last_update_time = #{lastUpdateTime,jdbcType = TIMESTAMP}
+            </if>
+            <if test="objectVersion !=null">
+                and ov.object_version = #{objectVersion,jdbcType = INTEGER}
+            </if>
+        </where>
+    </select>
+</mapper>
+
