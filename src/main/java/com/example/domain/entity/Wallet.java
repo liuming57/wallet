@@ -65,5 +65,8 @@ public class Wallet implements Serializable {
     @TableField(exist = false)
     @NotNull
     private Long optionId;
+
+    @TableField(exist = false)
+    private BigDecimal optionMoney;
 }
 

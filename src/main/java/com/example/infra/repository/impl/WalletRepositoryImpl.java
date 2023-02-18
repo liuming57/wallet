@@ -130,7 +130,7 @@ public class WalletRepositoryImpl implements WalletRepository {
         optionVersion.setUserId(wallet.getUserId())
                 .setBankId(-1L)
                 .setOptionId(wallet.getOptionId())
-                .setOptionMoney(wallet.getMoney());
+                .setOptionMoney(wallet.getOptionMoney());
         return optionVersion;
     }
 }
